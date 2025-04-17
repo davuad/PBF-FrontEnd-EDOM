@@ -131,185 +131,18 @@
                                     <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
                                 </button>
                                 <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Manage
-                                </a>
-                                <a href="course-students.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Students
+                                    Lihat
                                 </a>
                                 <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit Course
+                                    Edit 
                                 </a>
                                 <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Delete
+                                    Hapus
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="list-items flex flex-nowrap justify-between pr-10">
-                    <div class="flex shrink-0 w-[300px]">
-                        <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
-                                <img src="{{ asset('images/thumbnail/UIUX-1.png')}}" class="object-cover" alt="thumbnail">
-                            </div>
-                            <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Intro to Full-Stack</p>
-                                <p class="text-[#7F8190]">Beginners</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">11 March 2024</p>
-                    </div>
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#EAE8FE] font-bold text-sm text-[#6436F1]">Programming</p>
-                    </div>
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Manage
-                                </a>
-                                <a href="course-students.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Students
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit Course
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-items flex flex-nowrap justify-between pr-10">
-                    <div class="flex shrink-0 w-[300px]">
-                        <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
-                                <img src="{{ asset('images/thumbnail/Digital-Marketing-101.png')}}" class="object-cover" alt="thumbnail">
-                            </div>
-                            <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Digital Marketing 101</p>
-                                <p class="text-[#7F8190]">Beginners</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">11 March 2024</p>
-                    </div>
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#D5EFFE] font-bold text-sm text-[#066DFE]">Marketing</p>
-                    </div>
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Manage
-                                </a>
-                                <a href="course-students.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Students
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit Course
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-items flex flex-nowrap justify-between pr-10">
-                    <div class="flex shrink-0 w-[300px]">
-                        <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
-                                <img src="{{ asset('images/thumbnail/UIUX-2.png')}}" class="object-cover" alt="thumbnail">
-                            </div>
-                            <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Usability-Testing</p>
-                                <p class="text-[#7F8190]">Beginners</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">30 June 2024</p>
-                    </div>
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">Product Design</p>
-                    </div>
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Manage
-                                </a>
-                                <a href="course-students.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Students
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit Course
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-items flex flex-nowrap justify-between pr-10">
-                    <div class="flex shrink-0 w-[300px]">
-                        <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
-                                <img src="{{ asset('images/thumbnail/Web-Development.png')}}" class="object-cover" alt="thumbnail">
-                            </div>
-                            <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Web Development</p>
-                                <p class="text-[#7F8190]">Beginners</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">30 June 2024</p>
-                    </div>
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#EAE8FE] font-bold text-sm text-[#6436F1]">Programming</p>
-                    </div>
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Manage
-                                </a>
-                                <a href="course-students.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Students
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit Course
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </section>

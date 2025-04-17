@@ -162,8 +162,11 @@
                                     menu
                                     <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
                                 </button>
+                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
+                                    Lihat
+                                </a>
                                 <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit
+                                    Edit 
                                 </a>
                                 <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
                                     Hapus
