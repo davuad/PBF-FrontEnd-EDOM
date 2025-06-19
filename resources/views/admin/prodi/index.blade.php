@@ -19,29 +19,21 @@
                     <li>
                       <a href="{{ route('admin.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                           <div>
-                              <img src="{{ asset('images/icons/house-g.svg')}}" alt="icon">
+                              <img src="{{ asset('images/icons/house-g.svg ')}}" alt="icon">
                           </div>
                           <p class="font-semibold transition-all duration-300 hover:text-white">Dashboard</p>
                       </a>
                   </li>
                     <li>
-                        <a href="{{ route('admin.penilaian') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
-                            <div>
-                                <img src="{{ asset('images/icons/notepad-text.svg')}}" alt="icon">
-                            </div>
-                            <p class="font-semibold transition-all duration-300 hover:text-white">Penilaian</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.dosen') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 bg-[#2B82FE] hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.dosen.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/profile-2user.svg')}}" alt="icon">
                             </div>
-                            <p class="font-semibold transition-all duration-300 text-white hover:text-white">Dosen</p>
+                            <p class="font-semibold transition-all duration-300 hover:text-white">Dosen</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.mahasiswa') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.mahasiswa.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/graduation-cap.svg')}}" alt="icon">
                             </div>
@@ -49,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.matkul') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.matkul.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/book-open-text.svg')}}" alt="icon">
                             </div>
@@ -57,15 +49,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.prodi') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.prodi.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 bg-[#2B82FE] hover:bg-[#2B82FE]">
                             <div>
-                                <img src="{{ asset('images/icons/layers.svg')}}" alt="icon">
+                                <img src="{{ asset('images/icons/layers-w.svg')}}" alt="icon">
                             </div>
-                            <p class="font-semibold transition-all duration-300 hover:text-white">Program Studi</p>
+                            <p class="font-semibold transition-all duration-300 text-white hover:text-white">Program Studi</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.rekap') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.penilaian.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/message-square-text-g.svg')}}" alt="icon">
                             </div>
@@ -117,26 +109,29 @@
                 <div class="w-full flex justify-between items-center">
                     <div class="flex flex-col gap-1">
                         <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
-                        <p class="text-[#7F8190]">Kelola data Dosen</p>
+                        <p class="text-[#7F8190]">Kelola Data Program Studi</p>
                     </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
+                    <a href="{{ route('admin.prodi.tambah') }}" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Program Studi</a>
                 </div>
             </div>
             <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
                 <div class="course-list-header flex flex-nowrap justify-between pb-4 pr-10 border-b border-[#EEEEEE]">
                     <div class="flex shrink-0 w-[300px]">
-                        <p class="text-[#7F8190]">Nama Dosen</p>
+                        <p class="text-[#7F8190]">Nama Prodi</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[150px]">
-                        <p class="text-[#7F8190]">NIDN</p>
+                        <p class="text-[#7F8190]">Jumlah Dosen</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[170px]">
-                        <p class="text-[#7F8190]">Mata Kuliah</p>
+                        <p class="text-[#7F8190]">Jumlah Mahasiswa</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[120px]">
                         <p class="text-[#7F8190]">Aksi</p>
                     </div>
                 </div>
+        
+                @forelse ($data as $prodi)
+                
                 <div class="list-items flex flex-nowrap justify-between pr-10">
                     <div class="flex shrink-0 w-[300px]">
                         <div class="flex items-center gap-4">
@@ -144,16 +139,16 @@
                                 <img src="{{ asset('images/thumbnail/Basic-Interview.png')}}" class="object-cover" alt="thumbnail">
                             </div>
                             <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Davu Andrias Dzakwan</p>
+                                <p class="font-bold text-lg">{{ $prodi['nama_prodi'] ?? '-' }}</p>
                                 {{-- <p class="text-[#7F8190]">230102077</p> --}}
                             </div>
                         </div>
                     </div>
                     <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">10101010</p>
+                        <p class="font-semibold">{{ $prodi['jumlah_dosen'] ?? '-' }}</p>
                     </div>
                     <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">Algoritma</p>
+                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm">{{ $prodi['jumlah_mahasiswa'] ?? '-' }}</p>
                     </div>
                     <div class="flex shrink-0 w-[120px] items-center">
                         <div class="relative h-[41px]">
@@ -162,19 +157,22 @@
                                     menu
                                     <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
                                 </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Lihat
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
+                                <a href="{{ route('admin.prodi.edit', $prodi['id_prodi']) }}" class="flex items-center justify-between font-bold text-sm w-full">
                                     Edit 
                                 </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Hapus
-                                </a>
+                                <form action="{{ route('admin.prodi.hapus', $prodi['id_prodi']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Hapus</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                 @empty
+                <p class="text-center text-gray-500">Data mahasiswa tidak ditemukan.</p>
+                @endforelse
             </div>
         </div>
     </section>

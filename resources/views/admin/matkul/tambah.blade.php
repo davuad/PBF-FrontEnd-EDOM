@@ -17,11 +17,11 @@
                         <h3 class="font-bold text-xs text-[#A5ABB2]">Fitur</h3>
                     </li>
                     <li>
-                      <a href="" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 bg-[#2B82FE] transition-all duration-300 hover:bg-[#2B82FE]">
+                      <a href="{{ route('admin.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                           <div>
-                              <img src="{{ asset('images/icons/house.svg ')}}" alt="icon">
+                              <img src="{{ asset('images/icons/house-g.svg ')}}" alt="icon">
                           </div>
-                          <p class="font-semibold text-white transition-all duration-300 hover:text-white">Dashboard</p>
+                          <p class="font-semibold transition-all duration-300 hover:text-white">Dashboard</p>
                       </a>
                   </li>
                     <li>
@@ -41,11 +41,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.matkul.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.matkul.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 bg-[#2B82FE] hover:bg-[#2B82FE]">
                             <div>
-                                <img src="{{ asset('images/icons/book-open-text.svg')}}" alt="icon">
+                                <img src="{{ asset('images/icons/book-open-text-w.svg')}}" alt="icon">
                             </div>
-                            <p class="font-semibold transition-all duration-300 hover:text-white">Mata Kuliah</p>
+                            <p class="font-semibold transition-all duration-300 text-white hover:text-white">Mata Kuliah</p>
                         </a>
                     </li>
                     <li>
@@ -105,62 +105,76 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col px-5 mt-5">
-                <div class="w-full flex justify-between items-center">
-                    <div class="flex flex-col gap-1">
-                        <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
-                        <p class="text-[#7F8190]">Kelola data evaluasi dosen berdasarkan masukan dari mahasiswa</p>
-                    </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
+          
+            <div class="p-10 w-full">
+            <h1 class="text-2xl font-bold mb-6">Tambah Mata Kuliah</h1>
+
+            <form method="POST" action="{{ route('admin.matkul.simpan') }}" class="flex flex-col gap-[30px] w-[500px]">
+              @csrf
+
+              {{-- Nama Mata Kuliah --}}
+              <div class="flex flex-col gap-[10px]">
+                <p class="font-semibold">Nama Mata Kuliah</p>
+                <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+                  <input type="text" name="nama_matkul" placeholder="Contoh: Struktur Data" value="{{ old('nama_matkul') }}" class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none" required>
                 </div>
-            </div>
-            <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
-    <div class="bg-white border border-[#EEEEEE] rounded-[18px] p-[30px] shadow-[0_10px_16px_0_#0A090B0D]">
-        <h2 class="text-[26px] font-extrabold text-[#2B2F32] mb-4">Tentang Sistem Penilaian Dosen</h2>
-        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
-            Sistem Evaluasi Dosen oleh Mahasiswa adalah aplikasi berbasis web yang bertujuan untuk mengumpulkan umpan balik dari mahasiswa terhadap kinerja dosen pengajar.
-        </p>
-        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
-            Penilaian dilakukan berdasarkan beberapa aspek penting, di antaranya:
-        </p>
-        <ol class="list-disc pl-6 text-[#4B5563] text-base space-y-1 mb-4">
-            <li>Kejelasan dalam menyampaikan materi</li>
-            <li>Kedisiplinan dan kehadiran dosen</li>
-            <li>Kemampuan menjawab pertanyaan mahasiswa</li>
-            <li>Interaksi dan komunikasi selama pembelajaran</li>
-        </ol>
-        <p class="text-[#4B5563] leading-relaxed text-base">
-            Hasil evaluasi ini akan direkap dan ditampilkan kepada pihak akademik guna meningkatkan kualitas pengajaran. Data juga digunakan sebagai pertimbangan dalam pengembangan profesional dosen.
-        </p>
-    </div>
-</div>
+                @error('nama_matkul') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+              </div>
 
+              {{-- Program Studi --}}
+              <div class="flex flex-col gap-[10px]">
+                <p class="font-semibold">Program Studi</p>
+                <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+                  <select name="id_prodi" id="prodiSelect" class="font-semibold w-full outline-none bg-transparent" required>
+                    <option value="">Pilih Program Studi</option>
+                    {{-- Options diisi lewat fetch API --}}
+                  </select>
+                </div>
+                @error('id_prodi') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+              </div>
 
+              {{-- SKS --}}
+              <div class="flex flex-col gap-[10px]">
+                <p class="font-semibold">SKS</p>
+                <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+                  <input type="number" name="sks" placeholder="Contoh: 3" class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none" required>
+                </div>
+                @error('sks') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+              </div>
+
+              {{-- Tombol --}}
+              <div class="flex items-center gap-5">
+                <a href="{{ route('admin.matkul.index') }}" class="w-full h-[52px] p-[14px_20px] bg-gray-200 rounded-full font-semibold text-[#0A090B] text-center hover:bg-gray-300 transition-all duration-300">
+                  Kembali
+                </a>
+                <button type="submit" class="w-full h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">
+                  Simpan Mata Kuliah
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    </section>
+</section>
 
-    <script>
-        function toggleMaxHeight(button) {
-            const menuDropdown = button.parentElement;
-            menuDropdown.classList.toggle('max-h-fit');
-            menuDropdown.classList.toggle('shadow-[0_10px_16px_0_#0A090B0D]');
-            menuDropdown.classList.toggle('z-10');
-        }
-
-        document.addEventListener('click', function(event) {
-            const menuDropdowns = document.querySelectorAll('.menu-dropdown');
-            const clickedInsideDropdown = Array.from(menuDropdowns).some(function(dropdown) {
-                return dropdown.contains(event.target);
-            });
-            
-            if (!clickedInsideDropdown) {
-                menuDropdowns.forEach(function(dropdown) {
-                    dropdown.classList.remove('max-h-fit');
-                    dropdown.classList.remove('shadow-[0_10px_16px_0_#0A090B0D]');
-                    dropdown.classList.remove('z-10');
-                });
-            }
+{{-- Script untuk fetch data prodi --}}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("http://localhost:8080/api/prodi/getAll")
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById("prodiSelect");
+        data.forEach(prodi => {
+          const option = document.createElement("option");
+          option.value = prodi.id_prodi;
+          option.textContent = prodi.nama_prodi;
+          select.appendChild(option);
         });
-    </script>
+      })
+      .catch(error => console.error("Gagal ambil data prodi:", error));
+  });
+</script>
+
 </body>
 </html>
+
+

@@ -17,11 +17,11 @@
                         <h3 class="font-bold text-xs text-[#A5ABB2]">Fitur</h3>
                     </li>
                     <li>
-                      <a href="" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 bg-[#2B82FE] transition-all duration-300 hover:bg-[#2B82FE]">
+                      <a href="{{ route('admin.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                           <div>
-                              <img src="{{ asset('images/icons/house.svg ')}}" alt="icon">
+                              <img src="{{ asset('images/icons/house-g.svg')}}" alt="icon">
                           </div>
-                          <p class="font-semibold text-white transition-all duration-300 hover:text-white">Dashboard</p>
+                          <p class="font-semibold transition-all duration-300 hover:text-white">Dashboard</p>
                       </a>
                   </li>
                     <li>
@@ -33,11 +33,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.mahasiswa.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.mahasiswa.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 bg-[#2B82FE] transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
-                                <img src="{{ asset('images/icons/graduation-cap.svg')}}" alt="icon">
+                                <img src="{{ asset('images/icons/graduation-cap-w.svg')}}" alt="icon">
                             </div>
-                            <p class="font-semibold transition-all duration-300 hover:text-white">Mahasiswa</p>
+                            <p class="font-semibold transition-all duration-300 text-white hover:text-white">Mahasiswa</p>
                         </a>
                     </li>
                     <li>
@@ -105,62 +105,84 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col px-5 mt-5">
-                <div class="w-full flex justify-between items-center">
-                    <div class="flex flex-col gap-1">
-                        <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
-                        <p class="text-[#7F8190]">Kelola data evaluasi dosen berdasarkan masukan dari mahasiswa</p>
-                    </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
+
+      {{-- Content --}}
+          <div class="p-10 w-full ml-[10px]">
+          <h1 class="text-2xl font-bold mb-6">Edit Dosen</h1>
+          
+            {{-- Form --}}
+            <form method="POST" action="{{ route('admin.mahasiswa.update', $mahasiswa['id_mhs']) }}" class="flex flex-col gap-[30px] w-[500px] ">
+              @csrf
+              @method('PUT')
+
+              {{-- Nama Mahasiswa --}}
+              <div>
+                <label for="nama_mhs" class="block text-sm font-medium text-gray-700">Nama Mata Kuliah</label>
+                <input type="text" name="nama_mhs" id="nama_mhs" value="{{ old('nama_mhs', $mahasiswa['nama_mhs']) }}" class="mt-1 block w-full h-[52px] rounded-full border border-[#EEEEEE] px-5 font-semibold outline-none focus:border-[#0A090B]" required>
+              </div>
+
+              {{-- NPM --}}
+              <div>
+                <label for="npm" class="block text-sm font-medium text-gray-700">NPM</label>
+                <input type="text" name="npm" id="npm" value="{{ old('npm', $mahasiswa['npm']) }}" class="mt-1 block w-full h-[52px] rounded-full border border-[#EEEEEE] px-5 font-semibold outline-none focus:border-[#0A090B]" required>
+              </div>
+
+             {{-- email --}}
+              <div class="relative w-full">
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">email</label>
+                <div class="relative">
+                  <input 
+                    type="email" name="email" value="{{ old('email', $mahasiswa['email']) }}" class="block w-full h-[52px] rounded-full border border-[#EEEEEE] px-5 pr-12 font-semibold outline-none focus:border-[#0A090B]" required>
                 </div>
-            </div>
-            <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
-    <div class="bg-white border border-[#EEEEEE] rounded-[18px] p-[30px] shadow-[0_10px_16px_0_#0A090B0D]">
-        <h2 class="text-[26px] font-extrabold text-[#2B2F32] mb-4">Tentang Sistem Penilaian Dosen</h2>
-        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
-            Sistem Evaluasi Dosen oleh Mahasiswa adalah aplikasi berbasis web yang bertujuan untuk mengumpulkan umpan balik dari mahasiswa terhadap kinerja dosen pengajar.
-        </p>
-        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
-            Penilaian dilakukan berdasarkan beberapa aspek penting, di antaranya:
-        </p>
-        <ol class="list-disc pl-6 text-[#4B5563] text-base space-y-1 mb-4">
-            <li>Kejelasan dalam menyampaikan materi</li>
-            <li>Kedisiplinan dan kehadiran dosen</li>
-            <li>Kemampuan menjawab pertanyaan mahasiswa</li>
-            <li>Interaksi dan komunikasi selama pembelajaran</li>
-        </ol>
-        <p class="text-[#4B5563] leading-relaxed text-base">
-            Hasil evaluasi ini akan direkap dan ditampilkan kepada pihak akademik guna meningkatkan kualitas pengajaran. Data juga digunakan sebagai pertimbangan dalam pengembangan profesional dosen.
-        </p>
-    </div>
-</div>
+              </div>
 
 
+              {{-- Kelas --}}
+              <div>
+                <label for="kelas" class="block text-sm font-medium text-gray-700">Kelas</label>
+                <input type="text" name="kelas" id="kelas" value="{{ old('kelas', $mahasiswa['kelas']) }}" class="mt-1 block w-full h-[52px] rounded-full border border-[#EEEEEE] px-5 font-semibold outline-none focus:border-[#0A090B]" required>
+              </div>
+
+              {{-- Program Studi --}}
+              <div>
+                <label for="id_prodi" class="block text-sm font-medium text-gray-700">Program Studi</label>
+                <select name="id_prodi" id="id_prodi" class="mt-1 block w-full h-[52px] rounded-full border border-[#EEEEEE] px-5 font-semibold bg-transparent outline-none focus:border-[#0A090B]" required>
+                  <option value="">Pilih Program Studi</option>
+                  @foreach($prodiList as $prodi)
+                    <option value="{{ $prodi['id_prodi'] }}" {{ $mahasiswa['id_prodi'] == $prodi['id_prodi'] ? 'selected' : '' }}>
+                      {{ $prodi['nama_prodi'] }}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+
+              {{-- Tombol --}}
+              <div class="flex items-center gap-5">
+                <a href="{{ route('admin.mahasiswa.index') }}" class="w-full h-[52px] p-[14px_20px] bg-gray-200 rounded-full font-semibold text-[#0A090B] text-center hover:bg-gray-300 transition-all duration-300">
+                  Kembali
+                </a>
+                <button type="submit" class="w-full h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">
+                  Update Mahasiswa
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    </section>
+        </div>
+  </section>
 
-    <script>
-        function toggleMaxHeight(button) {
-            const menuDropdown = button.parentElement;
-            menuDropdown.classList.toggle('max-h-fit');
-            menuDropdown.classList.toggle('shadow-[0_10px_16px_0_#0A090B0D]');
-            menuDropdown.classList.toggle('z-10');
-        }
+  <script>
+  function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const isPassword = passwordInput.type === 'password';
 
-        document.addEventListener('click', function(event) {
-            const menuDropdowns = document.querySelectorAll('.menu-dropdown');
-            const clickedInsideDropdown = Array.from(menuDropdowns).some(function(dropdown) {
-                return dropdown.contains(event.target);
-            });
-            
-            if (!clickedInsideDropdown) {
-                menuDropdowns.forEach(function(dropdown) {
-                    dropdown.classList.remove('max-h-fit');
-                    dropdown.classList.remove('shadow-[0_10px_16px_0_#0A090B0D]');
-                    dropdown.classList.remove('z-10');
-                });
-            }
-        });
-    </script>
+    passwordInput.type = isPassword ? 'text' : 'password';
+    eyeIcon.src = isPassword 
+      ? "{{ asset('images/icons/eye-off.svg') }}" 
+      : "{{ asset('images/icons/eye.svg') }}";
+  }
+</script>
+
 </body>
 </html>

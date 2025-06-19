@@ -25,15 +25,7 @@
                       </a>
                   </li>
                     <li>
-                        <a href="{{ route('admin.penilaian') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
-                            <div>
-                                <img src="{{ asset('images/icons/notepad-text.svg')}}" alt="icon">
-                            </div>
-                            <p class="font-semibold transition-all duration-300 hover:text-white">Penilaian</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.dosen') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.dosen.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/profile-2user.svg')}}" alt="icon">
                             </div>
@@ -41,7 +33,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.mahasiswa') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.mahasiswa.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/graduation-cap.svg')}}" alt="icon">
                             </div>
@@ -49,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.matkul') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 bg-[#2B82FE] hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.matkul.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 bg-[#2B82FE] hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/book-open-text-w.svg')}}" alt="icon">
                             </div>
@@ -57,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.prodi') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.prodi.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/layers.svg')}}" alt="icon">
                             </div>
@@ -65,7 +57,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.rekap') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.penilaian.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                             <div>
                                 <img src="{{ asset('images/icons/message-square-text-g.svg')}}" alt="icon">
                             </div>
@@ -113,19 +105,22 @@
                     </div>
                 </div>
             </div>
+
+            {{-- MAIN CONTENT --}}
             <div class="flex flex-col px-5 mt-5">
                 <div class="w-full flex justify-between items-center">
                     <div class="flex flex-col gap-1">
                         <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
                         <p class="text-[#7F8190]">Kelola Data Mata Kuliah</p>
                     </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
+                    <a href="{{ route('admin.matkul.tambah') }}" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Mata Kuliah</a>
                 </div>
             </div>
+
             <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
                 <div class="course-list-header flex flex-nowrap justify-between pb-4 pr-10 border-b border-[#EEEEEE]">
                     <div class="flex shrink-0 w-[300px]">
-                        <p class="text-[#7F8190]">Nama Program Studi</p>
+                        <p class="text-[#7F8190]">Nama Mata Kuliah</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[150px]">
                         <p class="text-[#7F8190]">Jumlah SKS</p>
@@ -137,6 +132,7 @@
                         <p class="text-[#7F8190]">Aksi</p>
                     </div>
                 </div>
+                @forelse ($data as $matkul)
                 <div class="list-items flex flex-nowrap justify-between pr-10">
                     <div class="flex shrink-0 w-[300px]">
                         <div class="flex items-center gap-4">
@@ -144,16 +140,16 @@
                                 <img src="{{ asset('images/thumbnail/Basic-Interview.png')}}" class="object-cover" alt="thumbnail">
                             </div>
                             <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Algoritma Pemograman</p>
+                                <p class="font-bold text-lg">{{ $matkul['nama_matkul'] }}</p>
                                 {{-- <p class="text-[#7F8190]">230102077</p> --}}
                             </div>
                         </div>
                     </div>
                     <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">2</p>
+                        <p class="font-semibold">{{ $matkul['sks'] ?? '-' }}</p>
                     </div>
                     <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">Teknik Informatika</p>
+                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">{{ $matkul['nama_prodi'] ?? '-' }}</p>
                     </div>
                     <div class="flex shrink-0 w-[120px] items-center">
                         <div class="relative h-[41px]">
@@ -162,19 +158,22 @@
                                     menu
                                     <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
                                 </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Lihat
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
+                                <a href="{{ route('admin.matkul.edit', $matkul['id_matkul']) }}" class="flex items-center justify-between font-bold text-sm w-full">
                                     Edit 
                                 </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Hapus
-                                </a>
+                                <form action="{{ route('admin.matkul.hapus', $matkul['id_matkul']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Hapus</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                @empty
+                <p class="text-center text-gray-500">Data matkul tidak ditemukan.</p>
+                @endforelse
             </div>
         </div>
     </section>

@@ -91,59 +91,27 @@
                 </div>
             </div>
             <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
-                <div class="course-list-header flex flex-nowrap justify-between pb-4 pr-10 border-b border-[#EEEEEE]">
-                    <div class="flex shrink-0 w-[300px]">
-                        <p class="text-[#7F8190]">Nama Dosen</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[150px]">
-                        <p class="text-[#7F8190]">Tanggal Penilaian</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[170px]">
-                        <p class="text-[#7F8190]">Mata Kuliah</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[120px]">
-                        <p class="text-[#7F8190]">Aksi</p>
-                    </div>
-                </div>
-                <div class="list-items flex flex-nowrap justify-between pr-10">
-                    <div class="flex shrink-0 w-[300px]">
-                        <div class="flex items-center gap-4">
-                            <div class="w-16 h-16 flex shrink-0 overflow-hidden rounded-full">
-                                <img src="{{ asset('images/thumbnail/Basic-Interview.png')}}" class="object-cover" alt="thumbnail">
-                            </div>
-                            <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Davu Andrias Dzakwan</p>
-                                <p class="text-[#7F8190]">230102077</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">22 August 2024</p>
-                    </div>
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">Statistika</p>
-                    </div>
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Lihat
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit 
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Hapus
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="bg-white border border-[#EEEEEE] rounded-[18px] p-[30px] shadow-[0_10px_16px_0_#0A090B0D]">
+        <h2 class="text-[26px] font-extrabold text-[#2B2F32] mb-4">Tentang Sistem Penilaian Dosen</h2>
+        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
+            Sistem Evaluasi Dosen oleh Mahasiswa adalah aplikasi berbasis web yang bertujuan untuk mengumpulkan umpan balik dari mahasiswa terhadap kinerja dosen pengajar.
+        </p>
+        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
+            Penilaian dilakukan berdasarkan beberapa aspek penting, di antaranya:
+        </p>
+        <ol class="list-disc pl-6 text-[#4B5563] text-base space-y-1 mb-4">
+            <li>Kejelasan dalam menyampaikan materi</li>
+            <li>Kedisiplinan dan kehadiran dosen</li>
+            <li>Kemampuan menjawab pertanyaan mahasiswa</li>
+            <li>Interaksi dan komunikasi selama pembelajaran</li>
+        </ol>
+        <p class="text-[#4B5563] leading-relaxed text-base">
+            Hasil evaluasi ini akan direkap dan ditampilkan kepada pihak akademik guna meningkatkan kualitas pengajaran. Data juga digunakan sebagai pertimbangan dalam pengembangan profesional dosen.
+        </p>
+    </div>
+</div>
+
+
         </div>
     </section>
 

@@ -17,11 +17,11 @@
                         <h3 class="font-bold text-xs text-[#A5ABB2]">Fitur</h3>
                     </li>
                     <li>
-                      <a href="" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 bg-[#2B82FE] transition-all duration-300 hover:bg-[#2B82FE]">
+                      <a href="{{ route('admin.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
                           <div>
-                              <img src="{{ asset('images/icons/house.svg ')}}" alt="icon">
+                              <img src="{{ asset('images/icons/house-g.svg ')}}" alt="icon">
                           </div>
-                          <p class="font-semibold text-white transition-all duration-300 hover:text-white">Dashboard</p>
+                          <p class="font-semibold transition-all duration-300 hover:text-white">Dashboard</p>
                       </a>
                   </li>
                     <li>
@@ -49,11 +49,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.prodi.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                        <a href="{{ route('admin.prodi.index') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 bg-[#2B82FE] hover:bg-[#2B82FE]">
                             <div>
-                                <img src="{{ asset('images/icons/layers.svg')}}" alt="icon">
+                                <img src="{{ asset('images/icons/layers-w.svg')}}" alt="icon">
                             </div>
-                            <p class="font-semibold transition-all duration-300 hover:text-white">Program Studi</p>
+                            <p class="font-semibold transition-all duration-300 text-white hover:text-white">Program Studi</p>
                         </a>
                     </li>
                     <li>
@@ -105,62 +105,33 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col px-5 mt-5">
-                <div class="w-full flex justify-between items-center">
-                    <div class="flex flex-col gap-1">
-                        <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
-                        <p class="text-[#7F8190]">Kelola data evaluasi dosen berdasarkan masukan dari mahasiswa</p>
-                    </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
+          
+            <div class="p-10 w-full">
+            <h1 class="text-2xl font-bold mb-6">Edit Program Studi</h1>
+
+            <form method="POST" action="{{ route('admin.prodi.update', $prodi['id_prodi'])  }}" class="flex flex-col gap-[30px] w-[500px]">
+              @csrf
+              @method('PUT')
+
+              {{-- Nama Program Studi --}}
+              <div class="flex flex-col gap-[10px]">
+                <p class="font-semibold">Nama Program Studi</p>
+                <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+                  <input type="text" name="nama_prodi" placeholder="Contoh: Struktur Data" value="{{ old('nama_prodi', $prodi['nama_prodi']) }}" class="font-semibold placeholder:text-[#7F8190] placeholder:font-normal w-full outline-none" required>
                 </div>
-            </div>
-            <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
-    <div class="bg-white border border-[#EEEEEE] rounded-[18px] p-[30px] shadow-[0_10px_16px_0_#0A090B0D]">
-        <h2 class="text-[26px] font-extrabold text-[#2B2F32] mb-4">Tentang Sistem Penilaian Dosen</h2>
-        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
-            Sistem Evaluasi Dosen oleh Mahasiswa adalah aplikasi berbasis web yang bertujuan untuk mengumpulkan umpan balik dari mahasiswa terhadap kinerja dosen pengajar.
-        </p>
-        <p class="text-[#4B5563] leading-relaxed text-base mb-4">
-            Penilaian dilakukan berdasarkan beberapa aspek penting, di antaranya:
-        </p>
-        <ol class="list-disc pl-6 text-[#4B5563] text-base space-y-1 mb-4">
-            <li>Kejelasan dalam menyampaikan materi</li>
-            <li>Kedisiplinan dan kehadiran dosen</li>
-            <li>Kemampuan menjawab pertanyaan mahasiswa</li>
-            <li>Interaksi dan komunikasi selama pembelajaran</li>
-        </ol>
-        <p class="text-[#4B5563] leading-relaxed text-base">
-            Hasil evaluasi ini akan direkap dan ditampilkan kepada pihak akademik guna meningkatkan kualitas pengajaran. Data juga digunakan sebagai pertimbangan dalam pengembangan profesional dosen.
-        </p>
-    </div>
-</div>
+                @error('nama_prodi') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+              </div>
 
-
+              {{-- Tombol --}}
+              <div class="flex items-center gap-5">
+                <a href="{{ route('admin.prodi.index') }}" class="w-full h-[52px] p-[14px_20px] bg-gray-200 rounded-full font-semibold text-[#0A090B] text-center hover:bg-gray-300 transition-all duration-300">
+                  Kembali
+                </a>
+                <button type="submit" class="w-full h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">
+                  Simpan Program Studi
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-    </section>
-
-    <script>
-        function toggleMaxHeight(button) {
-            const menuDropdown = button.parentElement;
-            menuDropdown.classList.toggle('max-h-fit');
-            menuDropdown.classList.toggle('shadow-[0_10px_16px_0_#0A090B0D]');
-            menuDropdown.classList.toggle('z-10');
-        }
-
-        document.addEventListener('click', function(event) {
-            const menuDropdowns = document.querySelectorAll('.menu-dropdown');
-            const clickedInsideDropdown = Array.from(menuDropdowns).some(function(dropdown) {
-                return dropdown.contains(event.target);
-            });
-            
-            if (!clickedInsideDropdown) {
-                menuDropdowns.forEach(function(dropdown) {
-                    dropdown.classList.remove('max-h-fit');
-                    dropdown.classList.remove('shadow-[0_10px_16px_0_#0A090B0D]');
-                    dropdown.classList.remove('z-10');
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+</section>

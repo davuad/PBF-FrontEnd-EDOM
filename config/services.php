@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'ci_api' => [
+        'base_url' => env('CI_API_BASE_URL'),
+        'token' => env('CI_API_TOKEN'),
+    ],
 ];

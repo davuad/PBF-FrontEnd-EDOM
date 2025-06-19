@@ -32,6 +32,14 @@
                             <p class="font-semibold transition-all duration-300 text-white hover:text-white">Hasil Penilaian</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('dosen.saran') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
+                            <div>
+                                <img src="{{ asset('images/icons/note-text.svg')}}" alt="icon">
+                            </div>
+                            <p class="font-semibold transition-all duration-300 text-black hover:text-white">Saran</p>
+                        </a>
+                    </li>
                     <hr>
                     <li>
                       <a href="{{ route('login') }}" class="p-[10px_16px] flex items-center gap-[14px] rounded-full h-11 transition-all duration-300 hover:bg-[#2B82FE]">
@@ -79,7 +87,6 @@
                         <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
                         <p class="text-[#7F8190]">Kelola data evaluasi dosen berdasarkan masukan dari mahasiswa</p>
                     </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
                 </div>
             </div>
             <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
@@ -88,15 +95,13 @@
                         <p class="text-[#7F8190]">Nama Dosen</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[150px]">
-                        <p class="text-[#7F8190]">Tanggal Penilaian</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[170px]">
-                        <p class="text-[#7F8190]">Mata Kuliah</p>
+                        <p class="text-[#7F8190]">Program Studi</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[120px]">
-                        <p class="text-[#7F8190]">Aksi</p>
+                        <p class="text-[#7F8190]">Hasil Penilaian</p>
                     </div>
                 </div>
+                @forelse ($data as $penilaian)
                 <div class="list-items flex flex-nowrap justify-between pr-10">
                     <div class="flex shrink-0 w-[300px]">
                         <div class="flex items-center gap-4">
@@ -104,37 +109,21 @@
                                 <img src="{{ asset('images/thumbnail/Basic-Interview.png')}}" class="object-cover" alt="thumbnail">
                             </div>
                             <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Davu Andrias Dzakwan</p>
-                                <p class="text-[#7F8190]">230102077</p>
+                                <p class="font-bold text-lg">{{ $penilaian['nama_dosen'] }}</p>
+                                <p class="text-[#7F8190]">{{ $penilaian['nidn'] }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">22 August 2024</p>
+                    <div class="flex flex-col gap-[2px] items-center">
+                        <p class="font-bold text-lg">{{ $penilaian['nama_prodi'] ?? '-' }}</p>
                     </div>
-                    <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">Statistika</p>
-                    </div>
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Lihat
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Edit 
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Hapus
-                                </a>
-                            </div>
-                        </div>
+                    <div class="flex flex-col gap-[2px] items-center">
+                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">{{ $penilaian['aspek_nilai'] }}</p>
                     </div>
                 </div>
+                @empty
+                <p class="text-center text-gray-500">Data mahasiswa tidak ditemukan.</p>
+                @endforelse
             </div>
         </div>
     </section>

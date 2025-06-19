@@ -81,106 +81,122 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col px-5 mt-5">
-                <div class="w-full flex justify-between items-center">
-                    <div class="flex flex-col gap-1">
-                        <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
-                        <p class="text-[#7F8190]">Formulir Penilaian Mahasiswa Oleh Dosen</p>
-                    </div>
-                </div>
+
+            <div class="p-10 w-full">
+            <h1 class="text-2xl font-bold mb-6">Edit Penilaian</h1>
+
+            <form method="POST" action="{{ route('mahasiswa.update_penilaian', $penilaian['id_penilaian']) }}" class="flex flex-col gap-[30px] w-[500px]">
+          @csrf
+          @method('PUT')
+
+          {{-- Program Studi --}}
+          <div class="flex flex-col gap-[10px]">
+            <p class="font-semibold">Program Studi</p>
+            <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE] bg-gray-100">
+              <input type="text" id="prodiText" class="font-semibold w-full outline-none bg-transparent" readonly>
+              <input type="hidden" name="id_prodi" value="{{ $penilaian['id_prodi'] }}">
             </div>
-                        <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
-                <div class="course-list-header flex flex-nowrap justify-between pb-4 pr-10 border-b border-[#EEEEEE]">
-                    <div class="flex shrink-0 w-[300px]">
-                        <p class="text-[#7F8190]">Nama Dosen</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[150px]">
-                        <p class="text-[#7F8190]">NIDN</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[150px]">
-                        <p class="text-[#7F8190]">Prodi</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[170px]">
-                        <p class="text-[#7F8190]">Mata Kuliah</p>
-                    </div>
-                    <div class="flex justify-center shrink-0 w-[120px]">
-                        <p class="text-[#7F8190]">Aksi</p>
-                    </div>
-                </div>
-                @forelse ($listdosen as $dosen)
-                <div class="flex flex-nowrap justify-between items-center bg-white rounded shadow-sm p-4 mb-3">
-                    <!-- Foto Dosen -->
-                    <div class="flex items-center w-[300px]">
-                        <div class="w-16 h-16 overflow-hidden rounded-full mr-4">
-                            <img src="{{ asset('images/thumbnail/Basic-Interview.png') }}" class="object-cover w-full h-full" alt="Foto Dosen">
-                        </div>
-                        <div>
-                            <p class="font-bold text-lg">{{ $dosen['nama_dosen'] ?? '-' }}</p>
-                        </div>
-                    </div>
+            @error('id_prodi') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+          </div>
 
-                    <!-- NIDN -->
-                    <div class="w-[150px] text-center">
-                        <p class="font-semibold">{{ $dosen['nidn'] ?? '-' }}</p>
-                    </div>
 
-                    <!-- Nama Prodi -->
-                    <div class="w-[150px] text-center">
-                        <p class="font-semibold">{{ $dosen['nama_prodi'] ?? '-' }}</p>
-                    </div>
-
-                    <!-- Mata Kuliah -->
-                    <div class="w-[170px] text-center">
-                        <span class="px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">
-                            {{ $dosen['nama_matkul'] ?? '-' }}
-                        </span>
-                    </div>
-
-                    <div class="flex shrink-0 w-[120px] items-center">
-                        <div class="relative h-[41px]">
-                            <div class="menu-dropdown w-[120px] max-h-[41px] overflow-hidden absolute top-0 p-[10px_16px] bg-white flex flex-col gap-3 border border-[#EEEEEE] transition-all duration-300 hover:shadow-[0_10px_16px_0_#0A090B0D] rounded-[18px]">
-                                <button onclick="toggleMaxHeight(this)" class="flex items-center justify-between font-bold text-sm w-full">
-                                    menu
-                                    <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
-                                </button>
-                                <a href="{{ route('mahasiswa.tambah_penilaian', $dosen['id_dosen'] ) }}" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Tambah
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                <div class="text-center text-gray-500 mt-10">
-                    <p>Data dosen tidak ditemukan.</p>
-                </div>
-                @endforelse
+          {{-- Dosen --}}
+          <div class="flex flex-col gap-[10px]">
+            <p class="font-semibold">Dosen</p>
+            <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE] bg-gray-100">
+              <input type="text" id="dosenText" class="font-semibold w-full outline-none bg-transparent" readonly>
+              <input type="hidden" name="id_dosen" value="{{ $penilaian['id_dosen'] }}">
             </div>
-        </div>
-    </section>
+            @error('id_dosen') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+          </div>
 
-    <script>
-        function toggleMaxHeight(button) {
-            const menuDropdown = button.parentElement;
-            menuDropdown.classList.toggle('max-h-fit');
-            menuDropdown.classList.toggle('shadow-[0_10px_16px_0_#0A090B0D]');
-            menuDropdown.classList.toggle('z-10');
-        }
+          {{-- SKS --}}
+          <div class="flex flex-col gap-[10px]">
+            <p class="font-semibold">SKS</p>
+            <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+              <input type="number" name="sks" value="{{ old('sks', $penilaian['sks']) }}" class="font-semibold w-full outline-none bg-transparent" required>
+            </div>
+            @error('sks') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+          </div>
 
-        document.addEventListener('click', function(event) {
-            const menuDropdowns = document.querySelectorAll('.menu-dropdown');
-            const clickedInsideDropdown = Array.from(menuDropdowns).some(function(dropdown) {
-                return dropdown.contains(event.target);
-            });
-            
-            if (!clickedInsideDropdown) {
-                menuDropdowns.forEach(function(dropdown) {
-                    dropdown.classList.remove('max-h-fit');
-                    dropdown.classList.remove('shadow-[0_10px_16px_0_#0A090B0D]');
-                    dropdown.classList.remove('z-10');
-                });
-            }
-        });
-    </script>
+          {{-- Aspek Nilai --}}
+          <div class="flex flex-col gap-[10px]">
+            <p class="font-semibold">Aspek Nilai</p>
+            <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+              <select name="aspek_nilai" class="font-semibold w-full outline-none bg-transparent" required>
+                <option value="">Pilih Nilai</option>
+                @for ($i = 1; $i <= 5; $i++)
+                  <option value="{{ $i }}" {{ old('aspek_nilai', $penilaian['aspek_nilai']) == $i ? 'selected' : '' }}>
+                    {{ $i }} -
+                    @switch($i)
+                      @case(1) Sangat Buruk @break
+                      @case(2) Buruk @break
+                      @case(3) Cukup @break
+                      @case(4) Baik @break
+                      @case(5) Sangat Baik @break
+                    @endswitch
+                  </option>
+                @endfor
+              </select>
+            </div>
+            @error('aspek_nilai') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+          </div>
+
+          {{-- Saran --}}
+          <div class="flex flex-col gap-[10px]">
+            <p class="font-semibold">Saran</p>
+            <div class="flex items-center h-[52px] p-[14px_16px] rounded-full border border-[#EEEEEE]">
+              <input type="text" name="saran" maxlength="150" value="{{ old('saran', $penilaian['saran']) }}" class="font-semibold w-full outline-none bg-transparent" required>
+            </div>
+            @error('saran') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+          </div>
+
+          {{-- Tombol --}}
+          <div class="flex items-center gap-5">
+            <a href="{{ route('mahasiswa.isi_penilaian') }}" class="w-full h-[52px] p-[14px_20px] bg-gray-200 rounded-full font-semibold text-[#0A090B] text-center hover:bg-gray-300 transition-all duration-300">
+              Batal
+            </a>
+            <button type="submit" class="w-full h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">
+              Update Penilaian
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  {{-- Script untuk fetch data --}}
+  <script>
+   document.addEventListener("DOMContentLoaded", () => {
+  const selectedIdProdi = {{ $penilaian['id_prodi'] }};
+  
+  fetch("http://localhost:8080/api/prodi/getAll")
+    .then(res => res.json())
+    .then(data => {
+      const selectedProdi = data.find(p => p.id_prodi == selectedIdProdi);
+      if (selectedProdi) {
+        document.getElementById("prodiText").value = selectedProdi.nama_prodi;
+      } else {
+        document.getElementById("prodiText").value = "Tidak diketahui";
+      }
+    });
+});
+
+
+      // Dosen
+      const selectedIdDosen = {{ $penilaian['id_dosen'] }};
+
+fetch("http://localhost:8080/api/dosen/getAll")
+  .then(res => res.json())
+  .then(data => {
+    const selectedDosen = data.find(d => d.id_dosen == selectedIdDosen);
+    if (selectedDosen) {
+      document.getElementById("dosenText").value = selectedDosen.nama_dosen;
+    } else {
+      document.getElementById("dosenText").value = "Tidak diketahui";
+    }
+  });
+  </script>
+
 </body>
 </html>

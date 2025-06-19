@@ -87,7 +87,7 @@
                         <p class="font-extrabold text-[30px] leading-[45px]">Evaluasi Dosen Oleh Mahasiswa</p>
                         <p class="text-[#7F8190]">Kelola Riwayat Penilaian</p>
                     </div>
-                    <a href="new-course.html" class="h-[52px] p-[14px_20px] bg-[#6436F1] rounded-full font-bold text-white transition-all duration-300 hover:shadow-[0_4px_15px_0_#6436F14D]">Tambah Data Penilaian</a>
+                    
                 </div>
             </div>
             <div class="course-list-container flex flex-col px-5 mt-[30px] gap-[30px]">
@@ -96,15 +96,16 @@
                         <p class="text-[#7F8190]">Nama Dosen</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[150px]">
-                        <p class="text-[#7F8190]">Tanggal Penilaian</p>
+                        <p class="text-[#7F8190]">Program Studi</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[170px]">
-                        <p class="text-[#7F8190]">Mata Kuliah</p>
+                        <p class="text-[#7F8190]">Aspek Nilai</p>
                     </div>
                     <div class="flex justify-center shrink-0 w-[120px]">
                         <p class="text-[#7F8190]">Aksi</p>
                     </div>
                 </div>
+                @forelse ($data as $penilaian)
                 <div class="list-items flex flex-nowrap justify-between pr-10">
                     <div class="flex shrink-0 w-[300px]">
                         <div class="flex items-center gap-4">
@@ -112,16 +113,16 @@
                                 <img src="{{ asset('images/thumbnail/Basic-Interview.png')}}" class="object-cover" alt="thumbnail">
                             </div>
                             <div class="flex flex-col gap-[2px]">
-                                <p class="font-bold text-lg">Davu Andrias Dzakwan</p>
-                                <p class="text-[#7F8190]">230102077</p>
+                                <p class="font-bold text-lg">{{ $penilaian['nama_dosen'] }}</p>
+                                <p class="text-[#7F8190]">{{ $penilaian['nidn'] }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="flex shrink-0 w-[150px] items-center justify-center">
-                        <p class="font-semibold">22 August 2024</p>
+                        <p class="font-semibold">{{ $penilaian['nama_prodi'] }}</p>
                     </div>
                     <div class="flex shrink-0 w-[170px] items-center justify-center">
-                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">Statistika</p>
+                        <p class="p-[8px_16px] rounded-full bg-[#FFF2E6] font-bold text-sm text-[#F6770B]">{{ $penilaian['aspek_nilai'] }}</p>
                     </div>
                     <div class="flex shrink-0 w-[120px] items-center">
                         <div class="relative h-[41px]">
@@ -130,19 +131,16 @@
                                     menu
                                     <img src="{{ asset('images/icons/arrow-down.svg')}}" alt="icon">
                                 </button>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full">
-                                    Lihat
-                                </a>
-                                <a href="course-details.html" class="flex items-center justify-between font-bold text-sm w-full">
+                                <a href="{{ route('mahasiswa.edit_penilaian', $penilaian['id_penilaian']) }}" class="flex items-center justify-between font-bold text-sm w-full">
                                     Edit 
-                                </a>
-                                <a href="#" class="flex items-center justify-between font-bold text-sm w-full text-[#FD445E]">
-                                    Hapus
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                @empty
+                <p class="text-center text-gray-500">Data Penilaian tidak ditemukan.</p>
+                @endforelse
             </div>
         </div>
     </section>
