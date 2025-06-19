@@ -54,7 +54,7 @@ class AuthController extends Controller
             } elseif ($json['role'] === 'mahasiswa') {
                 return redirect()->route('mahasiswa.index');
             } elseif ($json['role'] === 'dosen') {
-                return redirect()->route('dosen.index');
+                return redirect()->route('dosen.index ');
             }
 
             return redirect('/')->with('success', 'Login berhasil');
